@@ -287,7 +287,7 @@ function mot(j) {
   if (j === 15) return "Déjà la moitié du chemin. Bravo d'être là !";
   if (j <= 22) return "Tu tiens bon. Pense à te reposer aussi.";
   if (j <= 29) return "La fin du mois approche. Prends soin de toi.";
-  return "Dernier jour. Merci d'avoir fait ce chemin.";
+  return "Dernier jour... Mais le chemin continue !";
 }
 
 /* ---------- Dates ---------- */
@@ -400,7 +400,7 @@ function ecranAujourdhui() {
   var max = jourMax(), n = etat.sel && etat.sel <= max ? etat.sel : max;
   var h = entete();
   if (j > NB) h += '<div class="banner">Ramadan est terminé. Tu peux relire tous les jours.</div>';
-  h += '<p class="hello">' + (n === max ? mot(n) : "Jour " + n + ", relu avec calme.") + '</p>' + carte(n);
+  h += '<p class="hello">' + (n === max ? mot(n) : "Jour " + n + ".") + '</p>' + carte(n);
   h += '<div class="pager"><button class="pbtn" data-nav="-1"' + (n <= 1 ? " disabled" : "") + '>← Jour ' + (n - 1) + '</button>' +
        '<button class="pbtn" data-nav="1"' + (n >= max ? " disabled" : "") + '>Jour ' + (n + 1) + ' →</button></div>';
   return h;
@@ -425,7 +425,6 @@ function ecranCalendrier() {
 function ecranApropos() {
   return entete() + '<h2 class="screen-title">À propos</h2>' +
     '<div class="box"><h3>Qu\'est-ce que Sirajy ?</h3><p>Sirajy est un projet sobre, gratuit et sans publicité, pensé pour les musulmans francophones. Son idée : un rappel simple, sourcé, qui accompagne la journée sans la surcharger.</p><p>Ce site en est le compagnon de Ramadan : une carte par jour pendant 30 jours, avec un « le saviez-vous », une bonne action, une question pour réfléchir ou un mini-quiz.</p></div>' +
-    '<div class="box"><h3>Rien n\'est collecté</h3><p>Pas de compte, pas de publicité, pas de suivi. Le site ne garde rien de toi.</p><p>Il utilise seulement la date du jour pour savoir quelle carte afficher. C\'est pour ça que tu peux relire les jours passés sans rien enregistrer.</p></div>' +
     '<div class="box"><h3>Les contenus</h3><p>Chaque carte donne sa source quand il y en a une. Les cartes marquées « À relire » attendent encore une vérification de leur référence.</p></div>' +
     (PROTO ? '<div class="box"><h3>Aperçu</h3><label class="switch"><input type="checkbox" id="apercu"' + (etat.apercu ? " checked" : "") + '> Simuler un jour de Ramadan</label>' +
     '<div class="row" style="margin-top:12px"><input class="range" id="jourApercu" type="range" min="1" max="' + NB + '" value="' + etat.jourApercu + '"' + (etat.apercu ? "" : " disabled") + ' aria-label="Jour simulé"><b id="valApercu">' + etat.jourApercu + '</b></div>' +
