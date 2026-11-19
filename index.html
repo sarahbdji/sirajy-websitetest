@@ -119,6 +119,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .card p { margin: 0; color: var(--ink); }
 .card .src { margin-top: 14px; font-size: 14px; opacity: .85; }
 .card .src b { font-weight: 700; }
+.en-bref h3 { font-family: var(--display); font-weight: 600; font-size: 17px; margin: 16px 0 4px; }
+.en-bref p + h3 { margin-top: 16px; }
 .card .relire { margin-top: 10px; font-size: 13px; font-weight: 700; opacity: .8; }
 
 /* Quiz */
@@ -213,7 +215,7 @@ var TYPES = {
 };
 var CONTENUS = {
   1: { type: "reflexion", titre: "Poser une intention", texte: "Avant de commencer : qu'est-ce que tu aimerais trouver dans ce mois, et qu'est-ce que tu aimerais en garder après ?" },
-  2: { type: "saviez", titre: "Un mois cité par son nom", texte: "Ramadan est le seul mois que le Coran nomme. C'est aussi dans ce verset que le Coran rappelle avoir commencé à être révélé durant ce mois.", source: "Coran, sourate Al-Baqara (2), verset 185" },
+  2: { type: "saviez", titre: "Un mois cité par son nom", texte: "Le mois du Ramadan est le seul mois que le Coran nomme. C'est aussi dans ce verset que le Coran rappelle avoir commencé à être révélé durant ce mois.", source: "Coran, sourate Al-Baqara (2), verset 185" },
   3: { type: "action", titre: "Partager un repas", texte: "Invite quelqu'un à rompre le jeûne avec toi, ou prépare de quoi en offrir un repas à quelqu'un.", source: "Hadith rapporté par at-Tirmidhi (807) : celui qui donne de quoi rompre le jeûne à une personne qui jeûne obtient la même récompense qu'elle, sans que la sienne diminue." },
   4: { type: "quiz", titre: "Où est le verset du jeûne ?", question: "Dans quelle sourate se trouve le verset qui prescrit le jeûne (verset 183) ?", choix: ["Al-Fatiha", "Al-Baqara", "Yusuf"], bonne: 1, explication: "C'est la sourate Al-Baqara (2), versets 183 à 185.", source: "Coran, sourate Al-Baqara (2), versets 183 à 185" },
   5: { type: "saviez", titre: "Une nuit particulière", texte: "Le Coran présente la Nuit du Destin comme meilleure que mille mois.", source: "Coran, sourate Al-Qadr (97), verset 3" },
@@ -340,6 +342,12 @@ function ecranAujourdhui() {
       '<section class="card reflexion"><span class="badge">' + ico("reflexion") + 'Intention du mois</span>' +
       '<h2>Ramadan commence par une intention</h2><p>Pourquoi veux-tu vivre ce mois, et qu\'aimerais-tu y chercher ?</p>' +
       '<p class="src"><b>Source</b> : Les actions valent par les intentions (Sahih al-Bukhari 1, Sahih Muslim 1907)</p></section>' +
+      '<section class="card saviez en-bref"><span class="badge">' + ico("saviez") + 'En bref</span><h2>Ramadan, c\'est quoi ?</h2>' +
+      '<h3>Le mois du jeûne</h3><p>Le mois du Ramadan est le neuvième mois du calendrier musulman. Chaque jour, de l\'aube au coucher du soleil, les musulmans jeûnent : ni manger, ni boire. C\'est l\'un des cinq piliers de l\'islam.</p>' +
+      '<h3>D\'où ça vient ?</h3><p>C\'est durant ce mois que le Coran a commencé à être révélé. Le Coran dit aussi que le jeûne a été prescrit aux croyants, comme il l\'avait été à ceux d\'avant eux.</p>' +
+      '<h3>À quoi ça sert ?</h3><p>Le Coran en donne le but : atteindre la piété (la taqwa). Beaucoup en profitent pour prier davantage, lire le Coran et donner autour d\'eux.</p>' +
+      '<h3>Pourquoi les dates changent</h3><p>Le calendrier musulman est lunaire : un mois commence avec la nouvelle lune et dure 29 ou 30 jours. L\'année lunaire est plus courte d\'environ 11 jours que l\'année habituelle, donc Ramadan arrive environ 11 jours plus tôt chaque année. Le mois se termine par l\'Aïd al-Fitr.</p>' +
+      '<p class="src"><b>Sources</b> : Coran, sourate Al-Baqara (2), versets 183 et 185 ; Sahih al-Bukhari 8, Sahih Muslim 16 (les cinq piliers).</p></section>' +
       '<div class="prepa"><h3>Pour te préparer</h3><ul><li>Prévois un moment calme chaque jour, même dix minutes.</li><li>Pense à une personne que tu aimerais inviter ou appeler.</li></ul></div>' +
       (PROTO ? '<p class="sub petit">Aperçu : active la simulation dans « À propos » pour voir les cartes.</p>' : '') + '</section>';
   }
