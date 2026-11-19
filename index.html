@@ -208,42 +208,238 @@ var PROTO = true;                  // aperçu activé tant que Ramadan n'a pas c
 
 /* ---------- Contenus (exemples à faire relire, tout contenu religieux doit être sourcé) ---------- */
 var TYPES = {
-  saviez:    { nom: "Le saviez-vous ?" },
+  apprentissage:    { nom: "Apprentissage" },
   action:    { nom: "Bonne action du jour" },
   reflexion: { nom: "Pour réfléchir" },
   quiz:      { nom: "Mini-quiz" }
 };
 var CONTENUS = {
-  1: { type: "reflexion", titre: "Poser une intention", texte: "Avant de commencer : qu'est-ce que tu aimerais trouver dans ce mois, et qu'est-ce que tu aimerais en garder après ?" },
-  2: { type: "saviez", titre: "Un mois cité par son nom", texte: "Le mois du Ramadan est le seul mois que le Coran nomme. C'est aussi dans ce verset que le Coran rappelle avoir commencé à être révélé durant ce mois.", source: "Coran, sourate Al-Baqara (2), verset 185" },
-  3: { type: "action", titre: "Partager un repas", texte: "Invite quelqu'un à rompre le jeûne avec toi, ou prépare de quoi en offrir un repas à quelqu'un.", source: "Hadith rapporté par at-Tirmidhi (807) : celui qui donne de quoi rompre le jeûne à une personne qui jeûne obtient la même récompense qu'elle, sans que la sienne diminue." },
-  4: { type: "quiz", titre: "Où est le verset du jeûne ?", question: "Dans quelle sourate se trouve le verset qui prescrit le jeûne (verset 183) ?", choix: ["Al-Fatiha", "Al-Baqara", "Yusuf"], bonne: 1, explication: "C'est la sourate Al-Baqara (2), versets 183 à 185.", source: "Coran, sourate Al-Baqara (2), versets 183 à 185" },
-  5: { type: "saviez", titre: "Une nuit particulière", texte: "Le Coran présente la Nuit du Destin comme meilleure que mille mois.", source: "Coran, sourate Al-Qadr (97), verset 3" },
-  6: { type: "reflexion", titre: "Ce qui occupe l'esprit", texte: "Quelle habitude de la journée te prend du temps sans t'apporter grand-chose ? Que mettrais-tu à la place, ne serait-ce que dix minutes ?" },
-  7: { type: "action", titre: "Un sourire", texte: "Offre un vrai sourire à quelqu'un aujourd'hui, surtout si la journée te semble longue.", source: "Hadith rapporté par at-Tirmidhi (1956) sur le sourire adressé à son frère.", verif: true },
-  8: { type: "saviez", titre: "Le repas d'avant l'aube", texte: "Le Prophète a encouragé à prendre le suhoor, le repas d'avant l'aube : il y a une bénédiction dedans.", source: "Sahih al-Bukhari 1923, Sahih Muslim 1095" },
-  9: { type: "action", titre: "Appeler un proche", texte: "Prends des nouvelles de quelqu'un de ta famille que tu n'as pas entendu depuis longtemps.", source: "Hadith rapporté par al-Bukhari (5985) sur le maintien des liens de parenté.", verif: true },
-  10: { type: "quiz", titre: "Le repas d'avant l'aube", question: "Comment s'appelle le repas pris avant l'aube, pendant Ramadan ?", choix: ["Le suhoor", "L'iftar", "Le tarawih"], bonne: 0, explication: "Le suhoor est le repas d'avant l'aube. L'iftar est celui de la rupture du jeûne.", source: "Sahih al-Bukhari 1923" },
-  11: { type: "reflexion", titre: "Un message à envoyer", texte: "À qui dois-tu un message, un merci ou des excuses ? Choisis une personne et écris-lui aujourd'hui, même quelques mots." },
-  12: { type: "saviez", titre: "Les portes du ciel", texte: "D'après un hadith, quand le mois de Ramadan commence, les portes du ciel sont ouvertes, les portes de l'Enfer sont fermées et les diables sont enchaînés.", source: "Sahih al-Bukhari 1899, Sahih Muslim 1079" },
-  13: { type: "action", titre: "Pardonner", texte: "Pense à quelqu'un envers qui tu gardes de la rancune. Fais un petit geste pour tourner la page, ou prends au moins l'intention de le faire.", source: "Coran, sourate Al Imran (3), verset 134 : il loue ceux qui maîtrisent leur colère et qui pardonnent aux gens." },
-  14: { type: "quiz", titre: "Une rencontre chaque nuit", question: "Avec quel ange le Prophète révisait-il le Coran chaque nuit de Ramadan ?", choix: ["Jibril", "Mikaïl", "Israfil"], bonne: 0, explication: "D'après Ibn Abbas, Jibril le rencontrait chaque nuit de Ramadan et le Coran était récité entre eux.", source: "Sahih al-Bukhari 6 et 1902" },
-  15: { type: "reflexion", titre: "Déjà la moitié", texte: "Tu es au milieu du mois. Qu'est-ce qui a été le plus facile ? Le plus difficile ? Qu'aimerais-tu ajuster pour la suite ?" },
-  16: { type: "action", titre: "Donner, même un peu", texte: "Donne quelque chose aujourd'hui, même petit : un peu d'argent, un repas, un coup de main.", source: "Sahih al-Bukhari 6 et 1902 : le Prophète était le plus généreux des gens, et il l'était plus encore en Ramadan." },
-  17: { type: "saviez", titre: "L'aumône de fin de mois", texte: "À la fin de Ramadan, le Prophète a prescrit la zakat al-fitr. Renseigne-toi auprès d'une source de confiance sur son montant et sa date.", source: "Sahih al-Bukhari 1503", verif: true },
-  18: { type: "quiz", titre: "Souviens-toi du jour 5", question: "La Nuit du Destin vaut mieux que combien de mois ?", choix: ["100", "1 000", "10 000"], bonne: 1, explication: "Elle vaut mieux que mille mois.", source: "Coran, sourate Al-Qadr (97), verset 3" },
-  19: { type: "reflexion", titre: "Dire merci", texte: "Quelles sont trois choses dont tu es reconnaissant aujourd'hui ? Prends un moment pour les nommer, même dans ta tête.", source: "Coran, sourate Ibrahim (14), verset 7 : Dieu promet d'augmenter ses bienfaits pour ceux qui sont reconnaissants." },
-  20: { type: "action", titre: "Un mot au voisin", texte: "Frappe chez un voisin pour lui dire bonjour, ou apporte-lui un petit plat.", source: "Hadith rapporté par al-Bukhari (6018) sur les égards dus au voisin.", verif: true },
-  21: { type: "saviez", titre: "Les dix dernières nuits", texte: "Le Prophète a invité à chercher la Nuit du Destin dans les nuits impaires des dix derniers jours de Ramadan.", source: "Sahih al-Bukhari 2017", verif: true },
-  22: { type: "reflexion", titre: "Que demander ?", texte: "Si tu pouvais demander trois choses dans tes invocations, ce serait quoi ? Prends le temps d'y penser.", source: "Coran, sourate Al-Baqara (2), verset 186 : Dieu dit qu'Il est proche et qu'Il répond à l'appel de celui qui L'invoque." },
-  23: { type: "action", titre: "Quelques versets", texte: "Lis quelques versets aujourd'hui, en arabe ou en traduction. Même une page.", source: "Sahih al-Bukhari 1902 : le Prophète récitait le Coran avec Jibril durant Ramadan." },
-  24: { type: "quiz", titre: "Un mois lunaire", question: "Un mois lunaire dure combien de jours ?", choix: ["28 ou 29", "29 ou 30", "31 ou 32"], bonne: 1, explication: "Il dure 29 ou 30 jours, selon l'observation de la nouvelle lune. C'est pour cela que le début de Ramadan peut varier d'un pays à l'autre.", source: "Hadith rapporté par al-Bukhari (1909) sur l'observation du croissant.", verif: true },
-  25: { type: "saviez", titre: "Jeûner aussi avec les mots", texte: "Le jeûne ne concerne pas que la nourriture. Le Prophète a dit que celui qui n'abandonne pas les paroles mensongères et les actes qui vont avec, Allah n'a pas besoin qu'il abandonne sa nourriture et sa boisson.", source: "Sahih al-Bukhari 1903" },
-  26: { type: "action", titre: "Donner ce qu'on aime", texte: "Choisis un objet auquel tu tiens un peu et donne-le à quelqu'un qui en a besoin.", source: "Coran, sourate Al Imran (3), verset 92 : on n'atteint pas la piété tant qu'on ne dépense pas de ce que l'on aime." },
-  27: { type: "reflexion", titre: "La vraie force", texte: "Qu'est-ce qui t'a mis en colère ce mois-ci, et comment as-tu réagi ? Que ferais-tu autrement ?", source: "Sahih al-Bukhari 6114 : le fort n'est pas celui qui terrasse les gens, mais celui qui se maîtrise dans la colère." },
-  28: { type: "saviez", titre: "La fin du mois", texte: "Le Coran invite à compléter le nombre de jours du mois et à glorifier Allah pour la guidée reçue. L'Aïd marque cette fin de mois.", source: "Coran, sourate Al-Baqara (2), verset 185" },
-  29: { type: "action", titre: "Un mot de remerciement", texte: "Écris un mot de remerciement à quelqu'un qui t'a aidé ou accompagné ce mois-ci." },
-  30: { type: "reflexion", titre: "Et après ?", texte: "Le mois se termine. Quelle petite habitude veux-tu garder : une lecture, une aumône, une prière en plus, un appel à un proche ? Choisis-en une seule." }
+
+  1: {
+    type: "reflexion",
+    titre: "Poser une intention",
+texte: "<p>En islam, l’intention, appelée <em>Niyya</em> (النية), est le fondement même de tout acte d'adoration. Sans intention sincère, un acte religieux peut perdre sa valeur spirituelle et devient un simple geste mécanique ou une habitude sociale.</p><p>Pour guider la réflexion du premier jour, voici trois questions simples à se poser :</p><ol><li><strong>Pourquoi je jeûne ?</strong> (Pour me rapprocher de Dieu, purifier mon cœur, me maîtriser).</li><li><strong>Qu'est-ce que je veux laisser derrière moi ce mois-ci ?</strong> (Une mauvaise habitude, la colère, la perte de temps, la négligence dans la prière).</li><li><strong>Quelle trace je veux que ce mois laisse en moi ?</strong> (Plus de patience, de générosité, une meilleure relation avec le Coran).</li></ol>",    source: "Sahih al-Bukhari (6689) - Narrateur : Omar Ibn Al Khattab : Les actions n'ont lieu que par les intentions et la personne obtient ce qu'elle a eu comme intention [...]."
+  },
+
+  2: {
+    type: "saviez",
+    titre: "Un mois cité par son nom",
+    texte: "Le mois du Ramadan est le seul mois que le Coran nomme. C'est aussi dans ce verset que le Coran rappelle avoir commencé à être révélé durant ce mois.",
+    source: "Coran, sourate Al-Baqara (2), verset 185"
+  },
+
+  3: {
+    type: "action",
+    titre: "Partager un repas",
+    texte: "Invite quelqu'un à rompre le jeûne avec toi, ou prépare de quoi en offrir un repas à quelqu'un.",
+    source: "Hadith rapporté par at-Tirmidhi (807) : celui qui donne de quoi rompre le jeûne à une personne qui jeûne obtient la même récompense qu'elle, sans que la sienne diminue."
+  },
+
+  4: {
+    type: "quiz",
+    titre: "Où est le verset du jeûne ?",
+    question: "Dans quelle sourate se trouve le verset qui prescrit le jeûne (verset 183) ?",
+    choix: ["Al-Fatiha", "Al-Baqara", "Yusuf"],
+    bonne: 1,
+    explication: "C'est la sourate Al-Baqara (2), versets 183 à 185.",
+    source: "Coran, sourate Al-Baqara (2), versets 183 à 185"
+  },
+
+  5: {
+    type: "saviez",
+    titre: "Une nuit particulière",
+    texte: "Le Coran présente la Nuit du Destin comme meilleure que mille mois.",
+    source: "Coran, sourate Al-Qadr (97), verset 3"
+  },
+
+  6: {
+    type: "reflexion",
+    titre: "Ce qui occupe l'esprit",
+    texte: "Quelle habitude de la journée te prend du temps sans t'apporter grand-chose ? Que mettrais-tu à la place, ne serait-ce que dix minutes ?"
+  },
+
+  7: {
+    type: "action",
+    titre: "Un sourire",
+    texte: "Offre un vrai sourire à quelqu'un aujourd'hui, surtout si la journée te semble longue.",
+    source: "Hadith rapporté par at-Tirmidhi (1956) sur le sourire adressé à son frère.",
+    verif: true
+  },
+
+  8: {
+    type: "saviez",
+    titre: "Le repas d'avant l'aube",
+    texte: "Le Prophète a encouragé à prendre le suhoor, le repas d'avant l'aube : il y a une bénédiction dedans.",
+    source: "Sahih al-Bukhari 1923, Sahih Muslim 1095"
+  },
+
+  9: {
+    type: "action",
+    titre: "Appeler un proche",
+    texte: "Prends des nouvelles de quelqu'un de ta famille que tu n'as pas entendu depuis longtemps.",
+    source: "Hadith rapporté par al-Bukhari (5985) sur le maintien des liens de parenté.",
+    verif: true
+  },
+
+  10: {
+    type: "quiz",
+    titre: "Le repas d'avant l'aube",
+    question: "Comment s'appelle le repas pris avant l'aube, pendant Ramadan ?",
+    choix: ["Le suhoor", "L'iftar", "Le tarawih"],
+    bonne: 0,
+    explication: "Le suhoor est le repas d'avant l'aube. L'iftar est celui de la rupture du jeûne.",
+    source: "Sahih al-Bukhari 1923"
+  },
+
+  11: {
+    type: "reflexion",
+    titre: "Un message à envoyer",
+    texte: "À qui dois-tu un message, un merci ou des excuses ? Choisis une personne et écris-lui aujourd'hui, même quelques mots."
+  },
+
+  12: {
+    type: "saviez",
+    titre: "Les portes du ciel",
+    texte: "D'après un hadith, quand le mois de Ramadan commence, les portes du ciel sont ouvertes, les portes de l'Enfer sont fermées et les diables sont enchaînés.",
+    source: "Sahih al-Bukhari 1899, Sahih Muslim 1079"
+  },
+
+  13: {
+    type: "action",
+    titre: "Pardonner",
+    texte: "Pense à quelqu'un envers qui tu gardes de la rancune. Fais un petit geste pour tourner la page, ou prends au moins l'intention de le faire.",
+    source: "Coran, sourate Al Imran (3), verset 134 : il loue ceux qui maîtrisent leur colère et qui pardonnent aux gens."
+  },
+
+  14: {
+    type: "quiz",
+    titre: "Une rencontre chaque nuit",
+    question: "Avec quel ange le Prophète révisait-il le Coran chaque nuit de Ramadan ?",
+    choix: ["Jibril", "Mikaïl", "Israfil"],
+    bonne: 0,
+    explication: "D'après Ibn Abbas, Jibril le rencontrait chaque nuit de Ramadan et le Coran était récité entre eux.",
+    source: "Sahih al-Bukhari 6 et 1902"
+  },
+
+  15: {
+    type: "reflexion",
+    titre: "Déjà la moitié",
+    texte: "Tu es au milieu du mois. Qu'est-ce qui a été le plus facile ? Le plus difficile ? Qu'aimerais-tu ajuster pour la suite ?"
+  },
+
+  16: {
+    type: "action",
+    titre: "Donner, même un peu",
+    texte: "Donne quelque chose aujourd'hui, même petit : un peu d'argent, un repas, un coup de main.",
+    source: "Sahih al-Bukhari 6 et 1902 : le Prophète était le plus généreux des gens, et il l'était plus encore en Ramadan."
+  },
+
+  17: {
+    type: "saviez",
+    titre: "L'aumône de fin de mois",
+    texte: "À la fin de Ramadan, le Prophète a prescrit la zakat al-fitr. Renseigne-toi auprès d'une source de confiance sur son montant et sa date.",
+    source: "Sahih al-Bukhari 1503",
+    verif: true
+  },
+
+  18: {
+    type: "quiz",
+    titre: "Souviens-toi du jour 5",
+    question: "La Nuit du Destin vaut mieux que combien de mois ?",
+    choix: ["100", "1 000", "10 000"],
+    bonne: 1,
+    explication: "Elle vaut mieux que mille mois.",
+    source: "Coran, sourate Al-Qadr (97), verset 3"
+  },
+
+  19: {
+    type: "reflexion",
+    titre: "Dire merci",
+    texte: "Quelles sont trois choses dont tu es reconnaissant aujourd'hui ? Prends un moment pour les nommer, même dans ta tête.",
+    source: "Coran, sourate Ibrahim (14), verset 7 : Dieu promet d'augmenter ses bienfaits pour ceux qui sont reconnaissants."
+  },
+
+  20: {
+    type: "action",
+    titre: "Un mot au voisin",
+    texte: "Frappe chez un voisin pour lui dire bonjour, ou apporte-lui un petit plat.",
+    source: "Hadith rapporté par al-Bukhari (6018) sur les égards dus au voisin.",
+    verif: true
+  },
+
+  21: {
+    type: "saviez",
+    titre: "Les dix dernières nuits",
+    texte: "Le Prophète a invité à chercher la Nuit du Destin dans les nuits impaires des dix derniers jours de Ramadan.",
+    source: "Sahih al-Bukhari 2017",
+    verif: true
+  },
+
+  22: {
+    type: "reflexion",
+    titre: "Que demander ?",
+    texte: "Si tu pouvais demander trois choses dans tes invocations, ce serait quoi ? Prends le temps d'y penser.",
+    source: "Coran, sourate Al-Baqara (2), verset 186 : Dieu dit qu'Il est proche et qu'Il répond à l'appel de celui qui L'invoque."
+  },
+
+  23: {
+    type: "action",
+    titre: "Quelques versets",
+    texte: "Lis quelques versets aujourd'hui, en arabe ou en traduction. Même une page.",
+    source: "Sahih al-Bukhari 1902 : le Prophète récitait le Coran avec Jibril durant Ramadan."
+  },
+
+  24: {
+    type: "quiz",
+    titre: "Un mois lunaire",
+    question: "Un mois lunaire dure combien de jours ?",
+    choix: ["28 ou 29", "29 ou 30", "31 ou 32"],
+    bonne: 1,
+    explication: "Il dure 29 ou 30 jours, selon l'observation de la nouvelle lune. C'est pour cela que le début de Ramadan peut varier d'un pays à l'autre.",
+    source: "Hadith rapporté par al-Bukhari (1909) sur l'observation du croissant.",
+    verif: true
+  },
+
+  25: {
+    type: "saviez",
+    titre: "Jeûner aussi avec les mots",
+    texte: "Le jeûne ne concerne pas que la nourriture. Le Prophète a dit que celui qui n'abandonne pas les paroles mensongères et les actes qui vont avec, Allah n'a pas besoin qu'il abandonne sa nourriture et sa boisson.",
+    source: "Sahih al-Bukhari 1903"
+  },
+
+  26: {
+    type: "action",
+    titre: "Donner ce qu'on aime",
+    texte: "Choisis un objet auquel tu tiens un peu et donne-le à quelqu'un qui en a besoin.",
+    source: "Coran, sourate Al Imran (3), verset 92 : on n'atteint pas la piété tant qu'on ne dépense pas de ce que l'on aime."
+  },
+
+  27: {
+    type: "reflexion",
+    titre: "La vraie force",
+    texte: "Qu'est-ce qui t'a mis en colère ce mois-ci, et comment as-tu réagi ? Que ferais-tu autrement ?",
+    source: "Sahih al-Bukhari 6114 : le fort n'est pas celui qui terrasse les gens, mais celui qui se maîtrise dans la colère."
+  },
+
+  28: {
+    type: "saviez",
+    titre: "La fin du mois",
+    texte: "Le Coran invite à compléter le nombre de jours du mois et à glorifier Allah pour la guidée reçue. L'Aïd marque cette fin de mois.",
+    source: "Coran, sourate Al-Baqara (2), verset 185"
+  },
+
+  29: {
+    type: "action",
+    titre: "Un mot de remerciement",
+    texte: "Écris un mot de remerciement à quelqu'un qui t'a aidé ou accompagné ce mois-ci."
+  },
+
+  30: {
+    type: "reflexion",
+    titre: "Et après ?",
+    texte: "Le mois se termine. Quelle petite habitude veux-tu garder : une lecture, une aumône, une prière en plus, un appel à un proche ? Choisis-en une seule."
+  }
+
 };
 
 /* ---------- Mots d'accompagnement ---------- */
@@ -342,11 +538,11 @@ function ecranAujourdhui() {
       '<section class="card reflexion"><span class="badge">' + ico("reflexion") + 'Intention du mois</span>' +
       '<h2>Ramadan commence par une intention</h2><p>Pourquoi veux-tu vivre ce mois, et qu\'aimerais-tu y chercher ?</p>' +
       '<p class="src"><b>Source</b> : Les actions valent par les intentions (Sahih al-Bukhari 1, Sahih Muslim 1907)</p></section>' +
+      
       '<section class="card saviez en-bref"><span class="badge">' + ico("saviez") + 'En bref</span><h2>Ramadan, c\'est quoi ?</h2>' +
-      '<h3>Le mois du jeûne</h3><p>Le mois du Ramadan est le neuvième mois du calendrier musulman. Chaque jour, de l\'aube au coucher du soleil, les musulmans jeûnent : ni manger, ni boire. C\'est l\'un des cinq piliers de l\'islam.</p>' +
-      '<h3>D\'où ça vient ?</h3><p>C\'est durant ce mois que le Coran a commencé à être révélé. Le Coran dit aussi que le jeûne a été prescrit aux croyants, comme il l\'avait été à ceux d\'avant eux.</p>' +
-      '<h3>À quoi ça sert ?</h3><p>Le Coran en donne le but : atteindre la piété (la taqwa). Beaucoup en profitent pour prier davantage, lire le Coran et donner autour d\'eux.</p>' +
-      '<h3>Pourquoi les dates changent</h3><p>Le calendrier musulman est lunaire : un mois commence avec la nouvelle lune et dure 29 ou 30 jours. L\'année lunaire est plus courte d\'environ 11 jours que l\'année habituelle, donc Ramadan arrive environ 11 jours plus tôt chaque année. Le mois se termine par l\'Aïd al-Fitr.</p>' +
+      '<h3>D\'où ça vient ?</h3><p>Pour nous, musulmans, ce mois est béni parce que c\'est durant le ramadan (en 610) que notre prophète Muhammad (paix et salut sur lui) a reçu les premières révélations du Coran par l\'intermédiaire de l\'ange Jibril (Gabriel), lors d\'une nuit sacrée que nous appelons <em>Laylat al-Qadr</em> (la « Nuit du Destin »).</p><p>Quelques années plus tard, en 624, Dieu nous a prescrit le jeûne de ce mois, qui est devenu l\'un des <strong>cinq piliers de notre foi</strong> (aux côtés de l\'attestation de foi, des cinq prières quotidiennes, de l\'aumône légale et du pèlerinage à La Mecque).</p>' +
+      '<h3>À quoi ça sert pour nous ?</h3><p>Le jeûne ne se résume pas à nous priver de nourriture, d\'eau, de tabac et de relations intimes de l\'aube au coucher du soleil. C\'est avant tout un cheminement spirituel :</p><ul><li><strong>Se rapprocher de Dieu :</strong> C\'est un mois privilégié pour multiplier nos prières (notamment la nuit), lire et méditer le Coran, et demander pardon.</li><li><strong>Maîtriser son ego et se purifier :</strong> En résistant à nos besoins primaires par amour pour Dieu, nous apprenons la patience, l\'autodiscipline et nous purifions notre cœur des mauvaises habitudes.</li><li><strong>Cultiver l\'empathie et la générosité :</strong> Ressentir la faim et la soif nous rappelle concrètement ce que vivent les plus démunis au quotidien. Cela nous pousse à être encore plus généreux, à verser nos aumônes (la <em>Zakat</em> et la <em>Sadaqa</em>) et à offrir des repas.</li><li><strong>Renforcer nos liens fraternels :</strong> Les soirées sont des moments de partage intenses où nous nous retrouvons en famille, entre amis ou à la mosquée pour rompre le jeûne ensemble (l\'<em>Iftar</em>), ce qui soude notre communauté.</li></ul>' +
+      '<h3>Pourquoi les dates changent-elles chaque année ?</h3><p>Les dates reculent d\'environ <strong>10 à 11 jours</strong> chaque année par rapport au calendrier civil (solaire) :</p><ul><li>Le <strong>calendrier hégirien</strong> est strictement lunaire et rythmé par l\'observation des cycles de la Lune.</li><li>Une année lunaire compte 12 mois de 29 ou 30 jours, soit <strong>354 ou 355 jours</strong> au total.</li><li>Comme l\'année solaire dure 365 ou 366 jours, ce calendrier est plus court d\'une dizaine de jours. Pour nous, c\'est aussi une sagesse : cela permet au ramadan de traverser toutes les saisons sur un cycle d\'environ 33 ans, afin que chaque croyant sur Terre vive l\'épreuve et la beauté du jeûne aussi bien pendant les longues journées chaudes d\'été que les courtes journées d\'hiver.</li></ul>' +
       '<p class="src"><b>Sources</b> : Coran, sourate Al-Baqara (2), versets 183 et 185 ; Sahih al-Bukhari 8, Sahih Muslim 16 (les cinq piliers).</p></section>' +
       '<div class="prepa"><h3>Pour te préparer</h3><ul><li>Prévois un moment calme chaque jour, même dix minutes.</li><li>Pense à une personne que tu aimerais inviter ou appeler.</li></ul></div>' +
       (PROTO ? '<p class="sub petit">Aperçu : active la simulation dans « À propos » pour voir les cartes.</p>' : '') + '</section>';
@@ -370,7 +566,7 @@ function ecranCalendrier() {
     h += '<button class="' + cls + '" data-jour="' + n + '"' + (ouvert ? "" : " disabled") + ' aria-label="Jour ' + n + '">' + n + (ouvert && c ? '<small>' + ico(c.type) + '</small>' : "") + '</button>';
   }
   h += '</div><div class="legend">';
-  [["saviez", "Le saviez-vous"], ["action", "Bonne action"], ["reflexion", "Réflexion"], ["quiz", "Quiz"]].forEach(function (t) {
+  [["apprentissage", "Apprentissage"], ["action", "Bonne action"], ["reflexion", "Réflexion"], ["quiz", "Quiz"]].forEach(function (t) {
     h += '<span><i style="background:var(--' + t[0] + '-bg)"></i>' + t[1] + '</span>';
   });
   return h + '</div>';
