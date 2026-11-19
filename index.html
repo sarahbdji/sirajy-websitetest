@@ -218,9 +218,30 @@ var CONTENUS = {
   1: {
     type: "reflexion",
     titre: "Poser une intention",
-texte: "<p>En islam, l’intention, appelée <em>Niyya</em> (النية), est le fondement même de tout acte d'adoration. Sans intention sincère, un acte religieux peut perdre sa valeur spirituelle et devient un simple geste mécanique ou une habitude sociale.</p><p>Pour guider la réflexion du premier jour, voici trois questions simples à se poser :</p><ol><li><strong>Pourquoi je jeûne ?</strong> (Pour me rapprocher de Dieu, purifier mon cœur, me maîtriser).</li><li><strong>Qu'est-ce que je veux laisser derrière moi ce mois-ci ?</strong> (Une mauvaise habitude, la colère, la perte de temps, la négligence dans la prière).</li><li><strong>Quelle trace je veux que ce mois laisse en moi ?</strong> (Plus de patience, de générosité, une meilleure relation avec le Coran).</li></ol>",    source: "Sahih al-Bukhari (6689) - Narrateur : Omar Ibn Al Khattab : Les actions n'ont lieu que par les intentions et la personne obtient ce qu'elle a eu comme intention [...]."
+    texte: `
+      <p>
+        En islam, l’intention, appelée <em>Niyya</em> (<span lang="ar" dir="rtl">النية</span>), est le fondement même de tout acte d'adoration. Sans intention sincère, un acte religieux peut perdre sa valeur spirituelle et devient un simple geste mécanique ou une habitude sociale.
+      </p>
+      <p>
+        Pour guider la réflexion du premier jour, voici trois questions simples à se poser :
+      </p>
+      <ol>
+        <li>
+          <strong>Pourquoi je jeûne ?</strong>
+          (Pour me rapprocher de Dieu, purifier mon cœur, me maîtriser).
+        </li>
+        <li>
+          <strong>Qu'est-ce que je veux laisser derrière moi ce mois-ci ?</strong>
+          (Une mauvaise habitude, la colère, la perte de temps, la négligence dans la prière).
+        </li>
+        <li>
+          <strong>Quelle trace je veux que ce mois laisse en moi ?</strong>
+          (Plus de patience, de générosité, une meilleure relation avec le Coran).
+        </li>
+      </ol>
+    `,
+    source: "Sahih al-Bukhari (6689) - Narrateur : Omar Ibn Al Khattab : Les actions n'ont lieu que par les intentions et la personne obtient ce qu'elle a eu comme intention [...]."
   },
-
   2: {
     type: "saviez",
     titre: "Un mois cité par son nom",
@@ -540,9 +561,9 @@ function ecranAujourdhui() {
       '<p class="src"><b>Source</b> : Les actions valent par les intentions (Sahih al-Bukhari 1, Sahih Muslim 1907)</p></section>' +
       
       '<section class="card saviez en-bref"><span class="badge">' + ico("saviez") + 'En bref</span><h2>Ramadan, c\'est quoi ?</h2>' +
-      '<h3>D\'où ça vient ?</h3><p>Pour nous, musulmans, ce mois est béni parce que c\'est durant le ramadan (en 610) que notre prophète Muhammad (paix et salut sur lui) a reçu les premières révélations du Coran par l\'intermédiaire de l\'ange Jibril (Gabriel), lors d\'une nuit sacrée que nous appelons <em>Laylat al-Qadr</em> (la « Nuit du Destin »).</p><p>Quelques années plus tard, en 624, Dieu nous a prescrit le jeûne de ce mois, qui est devenu l\'un des <strong>cinq piliers de notre foi</strong> (aux côtés de l\'attestation de foi, des cinq prières quotidiennes, de l\'aumône légale et du pèlerinage à La Mecque).</p>' +
+      '<h3>D\'où ça vient ?</h3><p>Pour nous, musulmans, ce mois est béni parce que c\'est durant le ramadan (en 610) que notre prophète Muhammad (paix et salut sur lui) a reçu les premières révélations du Coran par l\'intermédiaire de l\'ange Jibril (Gabriel), lors d\'une nuit sacrée que nous appelons <em>Laylat al-Qadr</em> (la « Nuit du Destin »).</p><p>Quelques années plus tard, en 624, Dieu nous a prescrit le jeûne de ce mois qui est devenu l\'un des <strong>cinq piliers de notre foi</strong> (aux côtés de l\'attestation de foi, des cinq prières quotidiennes, de l\'aumône légale et du pèlerinage à La Mecque).</p>' +
       '<h3>À quoi ça sert pour nous ?</h3><p>Le jeûne ne se résume pas à nous priver de nourriture, d\'eau, de tabac et de relations intimes de l\'aube au coucher du soleil. C\'est avant tout un cheminement spirituel :</p><ul><li><strong>Se rapprocher de Dieu :</strong> C\'est un mois privilégié pour multiplier nos prières (notamment la nuit), lire et méditer le Coran, et demander pardon.</li><li><strong>Maîtriser son ego et se purifier :</strong> En résistant à nos besoins primaires par amour pour Dieu, nous apprenons la patience, l\'autodiscipline et nous purifions notre cœur des mauvaises habitudes.</li><li><strong>Cultiver l\'empathie et la générosité :</strong> Ressentir la faim et la soif nous rappelle concrètement ce que vivent les plus démunis au quotidien. Cela nous pousse à être encore plus généreux, à verser nos aumônes (la <em>Zakat</em> et la <em>Sadaqa</em>) et à offrir des repas.</li><li><strong>Renforcer nos liens fraternels :</strong> Les soirées sont des moments de partage intenses où nous nous retrouvons en famille, entre amis ou à la mosquée pour rompre le jeûne ensemble (l\'<em>Iftar</em>), ce qui soude notre communauté.</li></ul>' +
-      '<h3>Pourquoi les dates changent-elles chaque année ?</h3><p>Les dates reculent d\'environ <strong>10 à 11 jours</strong> chaque année par rapport au calendrier civil (solaire) :</p><ul><li>Le <strong>calendrier hégirien</strong> est strictement lunaire et rythmé par l\'observation des cycles de la Lune.</li><li>Une année lunaire compte 12 mois de 29 ou 30 jours, soit <strong>354 ou 355 jours</strong> au total.</li><li>Comme l\'année solaire dure 365 ou 366 jours, ce calendrier est plus court d\'une dizaine de jours. Pour nous, c\'est aussi une sagesse : cela permet au ramadan de traverser toutes les saisons sur un cycle d\'environ 33 ans, afin que chaque croyant sur Terre vive l\'épreuve et la beauté du jeûne aussi bien pendant les longues journées chaudes d\'été que les courtes journées d\'hiver.</li></ul>' +
+      '<h3>Pourquoi les dates changent-elles chaque année ?</h3><p>Les dates reculent d\'environ <strong>10 à 11 jours</strong> chaque année par rapport au calendrier civil (qui est solaire) :</p><ul><li>Le <strong>calendrier hégirien</strong> est strictement lunaire et rythmé par l\'observation des cycles de la Lune.</li><li>Une année lunaire compte 12 mois de 29 ou 30 jours, soit <strong>354 ou 355 jours</strong> au total.</li><li>Comme l\'année solaire dure 365 ou 366 jours, ce calendrier est plus court d\'une dizaine de jours. Pour nous, c\'est aussi une sagesse : cela permet au ramadan de traverser toutes les saisons sur un cycle d\'environ 33 ans, afin que chaque croyant sur Terre vive l\'épreuve et la beauté du jeûne aussi bien pendant les longues journées chaudes d\'été que les courtes journées d\'hiver.</li></ul>' +
       '<p class="src"><b>Sources</b> : Coran, sourate Al-Baqara (2), versets 183 et 185 ; Sahih al-Bukhari 8, Sahih Muslim 16 (les cinq piliers).</p></section>' +
       '<div class="prepa"><h3>Pour te préparer</h3><ul><li>Prévois un moment calme chaque jour, même dix minutes.</li><li>Pense à une personne que tu aimerais inviter ou appeler.</li></ul></div>' +
       (PROTO ? '<p class="sub petit">Aperçu : active la simulation dans « À propos » pour voir les cartes.</p>' : '') + '</section>';
