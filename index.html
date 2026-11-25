@@ -356,6 +356,26 @@ body { background: radial-gradient(90% 40% at 50% 0%, var(--halo), transparent 7
 .prepa li::before { -webkit-text-stroke: 0; }
 .dhikr-tap { border: 0; box-shadow: 0 6px 0 rgba(74,46,36,.16); }
 .dhikr-tap:active { transform: translateY(3px); box-shadow: 0 3px 0 rgba(74,46,36,.16); }
+@media (prefers-reduced-motion: no-preference) {
+  .card.en-bref { animation: none !important; }
+  .app.entre > :not(.top) { animation: entree .35s ease both; }
+  .app.entre .card { animation: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card.glisse-d { animation: glisseD .3s ease both !important; }
+  .card.glisse-g { animation: glisseG .3s ease both !important; }
+  @keyframes glisseD { from { translate: 60px 0; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+  @keyframes glisseG { from { translate: -60px 0; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+}
+/* Grands écrans : on élargit la colonne (le téléphone ne change pas) */
+@media (min-width: 900px) {
+  .app { max-width: 880px; padding-left: 32px; padding-right: 32px; }
+  .tabs nav { max-width: 880px; }
+  .grid { grid-template-columns: repeat(10, 1fr); gap: 14px 12px; }
+  .res-liste { grid-template-columns: 1fr 1fr; column-gap: 40px; }
+  .res:nth-child(even) { flex-direction: row; text-align: left; }
+  .card { padding-left: 40px; padding-right: 40px; }
+}
 </style>
 </head>
 <body>
@@ -1080,9 +1100,11 @@ function dhikrAffichage() {
   return { val: String(cur), sur: "/ " + c, tour: tour > 1 ? "Tour " + tour : (n > 0 && cur === c ? "Objectif atteint" : "") };
 }
 function ecranDhikr() {
+  return entete() + '<h2 class="screen-title">Dhikr</h2><p class="sub">Touche le grand rond pour compter.</p><div id="dzone">' + dhikrZone() + '</div>';
+}
+function dhikrZone() {
   var d = DHIKR.filter(function (x) { return x.id === etat.dhikrId; })[0], a = dhikrAffichage();
-  var h = entete() + '<h2 class="screen-title">Dhikr</h2><p class="sub">Touche le grand rond pour compter.</p>' +
-    '<div class="filtres" role="group" aria-label="Formule">' + DHIKR.map(function (x) {
+  var h = '<div class="filtres" role="group" aria-label="Formule">' + DHIKR.map(function (x) {
       return '<button class="chip' + (x.id === etat.dhikrId ? " actif" : "") + '" data-dphrase="' + x.id + '">' + esc(x.nom) + '</button>';
     }).join("") + '</div>';
   if (d.ar) h += '<p class="dhikr-ar" lang="ar" dir="rtl">' + d.ar + '</p><p class="dhikr-latin">' + esc(d.latin) + '</p><p class="dhikr-fr">' + esc(d.fr) + '</p>';
@@ -1098,6 +1120,8 @@ function ecranDhikr() {
   return h;
 }
 
+function majDhikr() { var z = document.getElementById("dzone"); if (z) z.innerHTML = dhikrZone(); else rendre(); }
+
 /* ---------- Rendu et événements ---------- */
 var app = document.getElementById("app");
 function rendre() {
@@ -1110,6 +1134,8 @@ function aller(t) {
   etat.tab = t;
   try { history.replaceState(null, "", "#" + t); } catch (e) {}
   rendre(); window.scrollTo(0, 0);
+  app.classList.remove("entre"); void app.offsetWidth; app.classList.add("entre");
+  clearTimeout(aller.t); aller.t = setTimeout(function () { app.classList.remove("entre"); }, 500);
 }
 document.querySelector(".tabs").addEventListener("click", function (e) {
   var b = e.target.closest(".tab"); if (b) aller(b.dataset.tab);
@@ -1133,11 +1159,11 @@ app.addEventListener("click", function (e) {
     return;
   }
   var dr = e.target.closest("[data-dreset]");
-  if (dr) { etat.dhikrN = 0; rendre(); return; }
+  if (dr) { etat.dhikrN = 0; majDhikr(); return; }
   var dp = e.target.closest("[data-dphrase]");
-  if (dp) { etat.dhikrId = dp.getAttribute("data-dphrase"); etat.dhikrN = 0; var _d = DHIKR.filter(function (x) { return x.id === etat.dhikrId; })[0]; if (_d && _d.obj) etat.dhikrCible = _d.obj; rendre(); return; }
+  if (dp) { etat.dhikrId = dp.getAttribute("data-dphrase"); etat.dhikrN = 0; var _d = DHIKR.filter(function (x) { return x.id === etat.dhikrId; })[0]; if (_d && _d.obj) etat.dhikrCible = _d.obj; majDhikr(); return; }
   var dc = e.target.closest("[data-dcible]");
-  if (dc) { etat.dhikrCible = +dc.getAttribute("data-dcible"); etat.dhikrN = 0; rendre(); return; }
+  if (dc) { etat.dhikrCible = +dc.getAttribute("data-dcible"); etat.dhikrN = 0; majDhikr(); return; }
   var ai = e.target.closest(".aide");
   if (ai) { aller("apropos"); return; }
   var l = e.target.closest(".lampe");
@@ -1147,7 +1173,8 @@ app.addEventListener("click", function (e) {
   var r = e.target.closest("[data-rep]");
   if (r) { var n = etat.sel && etat.sel <= jourMax() ? etat.sel : jourMax(); etat.reponses[n] = etat.reponses[n] || {}; etat.reponses[n][+r.dataset.q || 0] = +r.dataset.rep; rendre(); return; }
   var p = e.target.closest("[data-nav]");
-  if (p && !p.disabled) { var cur = etat.sel && etat.sel <= jourMax() ? etat.sel : jourMax(); etat.sel = cur + +p.dataset.nav; rendre(); window.scrollTo(0, 0); }
+  if (p && !p.disabled) { var cur = etat.sel && etat.sel <= jourMax() ? etat.sel : jourMax(); var sens = +p.dataset.nav; etat.sel = cur + sens; rendre(); window.scrollTo(0, 0);
+    var ca = app.querySelector(".card"); if (ca) { ca.classList.add(sens > 0 ? "glisse-d" : "glisse-g"); } }
 });
 app.addEventListener("input", function (e) {
   if (e.target.id === "apercu") { etat.apercu = e.target.checked; etat.sel = null; rendre(); }
