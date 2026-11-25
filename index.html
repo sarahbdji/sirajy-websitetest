@@ -169,7 +169,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .day.sel { outline: 3px solid var(--ink); outline-offset: 3px; }
 .day.today { animation: none; box-shadow: 3px 3px 0 var(--edge), 0 0 0 5px var(--halo), 0 0 22px 4px var(--accent); }
 .day.futur { background: transparent; color: var(--muted); border: 2.5px dashed var(--muted); box-shadow: none; opacity: .75; cursor: default; }
-.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 20px; font-size: 14px; font-weight: 700; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 4px 0 18px; font-size: 14px; font-weight: 700; }
 .legend span { display: inline-flex; align-items: center; gap: 7px; }
 .legend i { width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid var(--edge); display: block; background: var(--t); }
 
@@ -897,17 +897,18 @@ function ecranAujourdhui() {
 
 function ecranCalendrier() {
   var j = jour(), max = jourMax(), sel = etat.sel && etat.sel <= max ? etat.sel : max;
-  var h = entete() + '<h2 class="screen-title">Les 30 jours</h2><p class="sub">Touche un jour passé pour le relire. Les prochains s\'ouvrent le moment venu.</p><div class="grid">';
+  var h = entete() + '<h2 class="screen-title">Les 30 jours</h2><p class="sub">Touche un jour passé pour le relire. Les prochains s\'ouvrent le moment venu.</p>';
+  var lg = '<div class="legend">';
+  [["saviez", "Apprentissage"], ["action", "Bonne action"], ["reflexion", "Réflexion"], ["pratique", "Bonne pratique"], ["quiz", "Quiz"]].forEach(function (x) {
+    lg += '<span class="' + x[0] + '"><i></i>' + x[1] + '</span>';
+  });
+  h += lg + '</div><div class="grid">';
   for (var n = 1; n <= NB; n++) {
     var c = CONTENUS[n], ouvert = j >= 1 && n <= max, cls = "day";
     if (!ouvert) cls += " futur";
     else { if (c) cls += " " + c.type; if (n === max && j <= NB) cls += " today"; if (n === sel) cls += " sel"; }
     h += '<button class="' + cls + '" data-jour="' + n + '"' + (ouvert ? "" : " disabled") + ' aria-label="Jour ' + n + '">' + n + (ouvert && c ? '<small>' + ico(c.type) + '</small>' : "") + '</button>';
   }
-  h += '</div><div class="legend">';
-  [["saviez", "Apprentissage"], ["action", "Bonne action"], ["reflexion", "Réflexion"], ["pratique", "Bonne pratique"], ["quiz", "Quiz"]].forEach(function (x) {
-    h += '<span class="' + x[0] + '"><i></i>' + x[1] + '</span>';
-  });
   return h + '</div>';
 }
 
