@@ -321,6 +321,41 @@ a.res:hover .res-titre { text-decoration: underline; }
 .q-ar { margin: 10px 0 2px; font-size: 22px; line-height: 2.1; text-align: right; font-style: normal; color: var(--ti); }
 .src .q-fr { margin-top: 2px; }
 .src .q-lbl { display: block; font-style: normal; font-weight: 800; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .7; margin-bottom: 3px; }
+
+/* ===== Style sobre : retour à l'esprit des premiers visuels ===== */
+:root { --soft: 0 3px 0 rgba(74,46,36,.10); --fine: rgba(74,46,36,.16); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --soft: 0 3px 0 rgba(0,0,0,.28); --fine: rgba(246,230,211,.18); } }
+:root[data-theme="dark"] { --soft: 0 3px 0 rgba(0,0,0,.28); --fine: rgba(246,230,211,.18); }
+body { background: radial-gradient(90% 40% at 50% 0%, var(--halo), transparent 70%), var(--bg); }
+.top h1 { text-shadow: none; }
+.top p { border: 0; box-shadow: var(--soft); }
+.banner { border: 0; transform: none; box-shadow: none; }
+.beads i { border: 0; background: color-mix(in srgb, var(--muted) 32%, transparent); }
+.beads i.on { background: var(--accent); }
+.beads i.now { background: var(--ink); box-shadow: none; transform: scale(1.6); }
+.card, .prepa, .box, .dhikr-sig { border: 0 !important; border-radius: 26px !important; transform: none !important; box-shadow: var(--soft) !important; }
+.dhikr-sig { border-radius: 16px !important; }
+.card.vide { border: 2px dashed var(--fine) !important; box-shadow: none !important; background: transparent; }
+@keyframes entree { from { transform: translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }
+.num { border: 0; transform: none; background: color-mix(in srgb, var(--paper) 70%, transparent); }
+.badge, .srctag, .card .relire { border: 0; background: color-mix(in srgb, var(--paper) 70%, transparent); }
+.pbtn, .tab, .chip, .partager, .score, .choice, .aide, .lune-btn, .dhikr-btn { border: 0; box-shadow: var(--soft); }
+.choice { border-radius: 16px; }
+.choice:hover:not([disabled]), .choice[disabled] { transform: none; box-shadow: var(--soft); }
+.pbtn[disabled] { box-shadow: none; }
+.tab[aria-current="page"], .chip.actif { transform: none; box-shadow: none; }
+.tabs { border-top: 1.5px solid var(--fine); }
+.day, .day:nth-child(n) { border: 0; border-radius: 16px; transform: none; box-shadow: var(--soft); }
+.day.sel { outline: 2px solid var(--ink); outline-offset: 2px; }
+.day.today { box-shadow: var(--soft), 0 0 0 3px var(--accent); }
+.day.futur { border: 1.5px dashed var(--muted); box-shadow: none; }
+.legend i, .mk.dot { border: 0; }
+.legend i { width: 14px; height: 14px; }
+.en-bref, .en-bref:nth-of-type(even) { transform: none !important; }
+.res .couv, .couv { border: 0; border-radius: 4px 10px 10px 4px; box-shadow: var(--soft); }
+.prepa li::before { -webkit-text-stroke: 0; }
+.dhikr-tap { border: 0; box-shadow: 0 6px 0 rgba(74,46,36,.16); }
+.dhikr-tap:active { transform: translateY(3px); box-shadow: 0 3px 0 rgba(74,46,36,.16); }
 </style>
 </head>
 <body>
@@ -481,19 +516,14 @@ source:" 'La signification du nom d'Allah ''Ar-Rahman'' '' par l'équipe Al-Bayy
     type: "action",
     titre: "Prendre des nouvelles d'un proche malade",
     texte: `Si tu as un proche malade, c'est peut-être le bon moment pour lui rendre visite ou simplement lui donner de tes nouvelles. Et si tu souhaites aller plus loin, l’association Ziyara Project accompagne les personnes malades isolées.
-Et Allah sait mieux.`,
+  Et Allah sait mieux.`,
     lien: { url: "https://ziyara-project.com", texte: "Découvrir Ziyara Project" },
     source: "Sahih al-Bukhari (1240) - Narrateur : Abu Hurayra : « Les droits du musulman sur le musulman sont au nombre de cinq : rendre le salut, visiter le malade, suivre les cortèges funèbre accepter une invitation, et répondre à celui qui éternue »"
   },
 
-  8: {
-    type: "pratique",
-    titre: "Faire une aumône discrète",
-    texte: "Fais une aumône (Sadaqa), même modeste, en toute discrétion.",
-    source: "Sahih al-Bukhari (6018) - Narrateur : Abu Hurayra : « Sept personnes seront couvert par Allah dans son ombre le jour où il n’y aura pas d’autre ombre que son ombre [...] un homme qui a fait une aumône qu’il a cachée au point où sa main gauche ne sait pas ce que sa main droite a dépensée. »"
-  },
 
-  9: {
+
+  8: {
     type: "reflexion",
     titre: "Dix bienfaits à remercier",
     texte: "Liste 10 bienfaits de ton quotidien pour lesquels remercier Dieu (*Al-Hamdoulillah*), au-delà de la nourriture. Prends ton temps : plus tu cherches, plus tu en trouves.",
@@ -501,12 +531,20 @@ Et Allah sait mieux.`,
     source: "Coran, sourate 14 (Ibrahim), verset 34 : « وَءَاتَىٰكُم مِّن كُلِّ مَا سَأَلْتُمُوهُ ۚ وَإِن تَعُدُّوا۟ نِعْمَتَ ٱللَّهِ لَا تُحْصُوهَآ ۗ إِنَّ ٱلْإِنسَـٰنَ لَظَلُومٌ كَفَّارٌ ٣٤\nEt Il vous a accordé de tout ce que vous Lui avez demandé. Et si vous comptiez les bienfaits d’Allah, vous ne sauriez les dénombrer. L’homme est vraiment très injuste, très ingrat. »"
   },
 
-  10: {
-    type: "saviez",
+  9: {
+    type: "pratique",
     titre: "Mettre de la vie dans ta maison",
     texte: "Si tu le peux, mets de la vie dans ta maison aujourd'hui en y récitant Sourate Al-Baqara. Et Allah sait mieux.",
     source: "Sahih Muslim (780) - Narrateur : Abu Hurayra : « Ne faites pas de vos maisons des tombes : récitez-y la sourate Al-Baqarah. »"
   },
+
+  10: {
+    type: "action",
+    titre: "Faire une aumône discrète",
+    texte: "Fais une aumône (Sadaqa), même modeste, en toute discrétion.",
+    source: "Sahih al-Bukhari (6018) - Narrateur : Abu Hurayra : « Sept personnes seront couvert par Allah dans son ombre le jour où il n’y aura pas d’autre ombre que son ombre [...] un homme qui a fait une aumône qu’il a cachée au point où sa main gauche ne sait pas ce que sa main droite a dépensée. »"
+  },
+
 
   11: {
     type: "pratique",
@@ -516,14 +554,8 @@ Et Allah sait mieux.`,
     source: "Coran, sourate 33 (Al-Ahzab), verset 41 : « يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱذْكُرُوا۟ ٱللَّهَ ذِكْرًا كَثِيرًا ٤١\nÔ vous qui croyez ! Evoquez Allah d’une façon abondante. »"
   },
 
-  12: {
-    type: "action",
-    titre: "Zéro gaspillage à table",
-    texte: "Évite tout gaspillage alimentaire à l'Iftar et au Sahour : cuisine juste ce qu'il faut et réutilise les restes.",
-    source: "Coran, sourate 7 (Al-A'raf), verset 31 : « ۞ يَـٰبَنِىٓ ءَادَمَ خُذُوا۟ زِينَتَكُمْ عِندَ كُلِّ مَسْجِدٍ وَكُلُوا۟ وَٱشْرَبُوا۟ وَلَا تُسْرِفُوٓا۟ ۚ إِنَّهُۥ لَا يُحِبُّ ٱلْمُسْرِفِينَ ٣١\nÔ enfants d’Adam ! Portez votre parure (vos habits) dans chaque lieu de prière ! Et mangez et buvez; et ne commettez pas d’excès, car Il [Allah] n’aime pas ceux qui commettent des excès. »"
-  },
 
-  13: {
+  12: {
     type: "reflexion",
     titre: "Protéger sa concentration pendant la prière (Khushu')",
     texte: `Entre les écrans et les sollicitations du quotidien, notre esprit reste souvent dispersé au moment de prier. Préparer son cœur quelques minutes avant l'appel transforme la prière en un véritable refuge.
@@ -534,10 +566,17 @@ Et Allah sait mieux.`,
 **Action du jour :** Applique ce rituel de déconnexion avant au moins deux prières aujourd'hui, et observe la différence dans ta sérénité.`
   },
 
-  14: {
+  13: {
     type: "saviez",
     titre: "Une nouvelle invocation",
     texte: "Apprends par cœur une nouvelle invocation (Dou'a) prophétique du matin ou du soir."
+  },
+
+  14: {
+    type: "pratique",
+    titre: "Zéro gaspillage à table",
+    texte: "Évite tout gaspillage alimentaire à l'Iftar et au Sahour : cuisine juste ce qu'il faut et réutilise les restes.",
+    source: "Coran, sourate 7 (Al-A'raf), verset 31 : « ۞ يَـٰبَنِىٓ ءَادَمَ خُذُوا۟ زِينَتَكُمْ عِندَ كُلِّ مَسْجِدٍ وَكُلُوا۟ وَٱشْرَبُوا۟ وَلَا تُسْرِفُوٓا۟ ۚ إِنَّهُۥ لَا يُحِبُّ ٱلْمُسْرِفِينَ ٣١\nÔ enfants d’Adam ! Portez votre parure (vos habits) dans chaque lieu de prière ! Et mangez et buvez; et ne commettez pas d’excès, car Il [Allah] n’aime pas ceux qui commettent des excès. »"
   },
 
   15: {
@@ -850,7 +889,7 @@ function ecranAujourdhui() {
   var max = jourMax(), n = etat.sel && etat.sel <= max ? etat.sel : max;
   var h = entete();
   if (j > NB) h += '<div class="banner">Ramadan est terminé. Tu peux relire tous les jours.</div>';
-  h += '<p class="hello">' + (n === max ? mot(n) : "Jour " + n + ".") + '</p>' + carte(n);
+  h += (n === max ? '<p class="hello">' + mot(n) + '</p>' : '') + carte(n);
   h += '<div class="pager"><button class="pbtn" data-nav="-1"' + (n <= 1 ? " disabled" : "") + '>← Jour ' + (n - 1) + '</button>' +
        '<button class="pbtn" data-nav="1"' + (n >= max ? " disabled" : "") + '>Jour ' + (n + 1) + ' →</button></div>';
   return h;
